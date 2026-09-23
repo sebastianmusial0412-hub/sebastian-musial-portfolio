@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sebastian Musiał — About">
+<title>Sebastian Musiał — About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+
+
+
+
+
+
+
+
+
+<style>
+/* Centered About content — matching the Education reference */
+.about-page main,
+.about-page .about-main,
+.about-page .container,
+.about-page .content,
+.about-page .page-content {
+  width: min(760px, calc(100% - 48px));
+  max-width: 760px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.experience-section,
+.experience-list {
+  width: 100%;
+  max-width: 760px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.education-section,
+.education-list {
+  width: 100%;
+  max-width: 760px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.experience-section .section-heading {
+  text-align: left;
+}
+
+.experience-row {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+  .about-page main,
+  .about-page .about-main,
+  .about-page .container,
+  .about-page .content,
+  .about-page .page-content {
+    width: calc(100% - 32px);
+    max-width: none;
+  }
+}
+</style>
+
+
+<style>
+/* Wszystkie sekcje O mnie mają jeden wspólny, równy system kart. */
+.about-section{
+  width:100%;
+  max-width:760px;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.experience-section,
+.education-section,
+.directions-section{
+  margin-top:72px;
+}
+.experience-section .section-heading,
+.education-section .section-heading,
+.directions-section .section-heading{
+  margin-bottom:22px;
+  text-align:left;
+}
+.experience-list,
+.uniform-list{
+  width:100%;
+  max-width:760px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.experience-row,
+.uniform-row{
+  position:relative;
+  width:100%;
+  min-height:84px;
+  display:flex;
+  align-items:center;
+  gap:22px;
+  padding:18px 28px;
+  box-sizing:border-box;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:15px;
+  background:rgba(255,255,255,.012);
+  overflow:hidden;
+  transition:background .22s ease,border-color .22s ease,transform .22s ease;
+}
+.experience-mark{
+  flex:0 0 22px;
+  width:22px;
+  color:rgba(255,255,255,.48);
+  font-size:17px;
+  text-align:center;
+}
+.experience-info{
+  min-width:0;
+  transition:opacity .2s ease;
+}
+.experience-info h3{
+  margin:0;
+  font-size:16px;
+  line-height:1.35;
+  font-weight:700;
+  color:rgba(255,255,255,.9);
+}
+.experience-info h3 span{font-weight:500}
+.experience-info p{
+  margin:6px 0 0;
+  font-size:12px;
+  line-height:1.5;
+  color:rgba(255,255,255,.48);
+}
+.experience-hover{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 28px 0 72px;
+  background:rgba(14,14,17,.97);
+  opacity:0;
+  transform:translateY(8px);
+  pointer-events:none;
+  transition:opacity .22s ease,transform .22s ease;
+}
+.experience-hover small{
+  font-size:10px;
+  letter-spacing:2px;
+  color:rgba(255,255,255,.42);
+}
+.experience-hover strong{
+  font-size:15px;
+  font-weight:600;
+  color:rgba(255,255,255,.88);
+}
+.experience-row:hover,
+.uniform-row:hover{
+  background:rgba(255,255,255,.025);
+  border-color:rgba(255,255,255,.18);
+  transform:translateY(-1px);
+}
+.experience-row:hover .experience-hover{opacity:1;transform:translateY(0)}
+.experience-row:hover .experience-info{opacity:.08}
+
+/* Education and direction remain visually identical to experience. */
+.education-section .uniform-row,
+.directions-section .uniform-row{
+  cursor:default;
+}
+
+@media(max-width:700px){
+  .experience-section,
+  .education-section,
+  .directions-section{margin-top:54px}
+  .experience-row,
+  .uniform-row{
+    padding:16px 18px;
+    gap:14px;
+    min-height:76px;
+  }
+  .experience-info h3{font-size:14px}
+  .experience-hover{
+    padding:0 18px 0 54px;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    gap:5px;
+  }
+  .experience-hover strong{font-size:14px}
+}
+</style>
+
+
+<style>
+.experience-detail-row{cursor:default}
+.experience-detail{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:22px 30px 22px 72px;
+  box-sizing:border-box;
+  background:rgba(12,13,16,.985);
+  border-radius:15px;
+  opacity:0;
+  transform:translateY(8px);
+  pointer-events:none;
+  transition:opacity .22s ease,transform .22s ease;
+}
+.experience-detail .detail-title{
+  display:block;
+  margin-bottom:9px;
+  font-size:9px;
+  letter-spacing:2px;
+  color:rgba(255,255,255,.42);
+}
+.experience-detail ul{
+  margin:0;
+  padding-left:18px;
+  display:grid;
+  gap:5px;
+  color:rgba(255,255,255,.78);
+  font-size:12px;
+  line-height:1.42;
+}
+.experience-detail li{padding-left:2px}
+.experience-detail-row:hover{
+  min-height:190px;
+  border-color:rgba(255,255,255,.18);
+  background:rgba(255,255,255,.025);
+  transform:translateY(-1px);
+}
+.experience-detail-row:hover .experience-info,
+.experience-detail-row:hover .experience-mark{
+  opacity:0;
+}
+.experience-detail-row:hover .experience-detail{
+  opacity:1;
+  transform:translateY(0);
+}
+@media(max-width:700px){
+  .experience-detail-row:hover{min-height:0}
+  .experience-detail-row:focus-within .experience-detail,
+  .experience-detail-row:hover .experience-detail{opacity:1}
+  .experience-detail{
+    position:relative;
+    inset:auto;
+    margin-top:12px;
+    padding:16px 18px 16px 54px;
+    border-top:1px solid rgba(255,255,255,.08);
+    border-radius:0 0 12px 12px;
+    transform:none;
+  }
+  .experience-detail ul{font-size:11px;gap:6px}
+}
+</style>
+
+</head>
+<body class="about-page">
+<div class="bg-glow"></div>
+
+<header class="nav">
+  <a class="logo" href="index.html">SM</a>
+  <nav><a href="index.html">Home</a>
+<a href="about.html">About</a></nav>
+  <button class="theme" aria-label="Przełącz motyw">☾</button>
+</header>
+
+<main>
+<section class="about-hero">
+  <div class="eyebrow">A B O U T &nbsp; M E</div>
+  <h1>O mnie</h1>
+  <div class="hero-line"></div>
+  <p class="about-lead">Poznaj moje doświadczenie, kierunek rozwoju<br class="desktop"> oraz obszary, w których chcę budować swoją karierę.</p>
+</section>
+
+<section class="about-main">
+  <div class="about-label">01 / PROFIL</div>
+  <div class="about-copy">
+    <p>Absolwent technikum teleinformatycznego, rozwijający się w kierunku cyberbezpieczeństwa i bezpieczeństwa systemów informatycznych.</p>
+    <p>Posiadam podstawową wiedzę z zakresu bezpieczeństwa sieci, systemów operacyjnych, aplikacji webowych oraz Security Testing.</p>
+    <p>Mam również praktyczne doświadczenie w diagnostyce, konfiguracji i naprawie sprzętu komputerowego.</p>
+    <p>Systematycznie rozwijam kompetencje poprzez kursy i samodzielną naukę.</p>
+    <p>Poszukuję możliwości rozpoczęcia kariery na stanowisku <strong>Junior Cybersecurity / SOC / IT Security.</strong></p>
+  </div>
+</section>
+
+
+
+
+
+<section class="about-section experience-section">
+  <div class="section-heading">
+    <span class="section-kicker">01 / DOŚWIADCZENIE ZAWODOWE</span>
+    <h2>Doświadczenie zawodowe</h2>
+  </div>
+
+  <div class="experience-list">
+    <article class="experience-row experience-detail-row">
+      <div class="experience-mark">↯</div>
+      <div class="experience-info">
+        <h3>Pracownik wielozadaniowy KINO, <span>Cinema City</span></h3>
+        <p>12.2024 - Obecnie</p>
+      </div>
+      <div class="experience-detail">
+        <span class="detail-title">ZAKRES OBOWIĄZKÓW</span>
+        <ul>
+          <li>Praca w dynamicznym środowisku kinowym z zachowaniem wysokich standardów obsługi klienta.</li>
+          <li>Wdrażanie i szkolenie nowych pracowników w zakresie obsługi klienta i procedur kina.</li>
+          <li>Zapewnienie sprawnego przebiegu sprzedaży biletów i produktów w punktach gastronomicznych.</li>
+          <li>Monitorowanie i dbanie o porządek na stanowisku pracy oraz w salach kinowych.</li>
+          <li>Przestrzeganie procedur bezpieczeństwa i higieny pracy oraz standardów firmy.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="experience-row experience-detail-row">
+      <div class="experience-mark">↯</div>
+      <div class="experience-info">
+        <h3>Pracownik restauracji, <span>Max Poland Sp. z o.o.</span></h3>
+        <p>09.2024 - 02.2025</p>
+      </div>
+      <div class="experience-detail">
+        <span class="detail-title">ZAKRES OBOWIĄZKÓW</span>
+        <ul>
+          <li>Obsługa kasy i systemu sprzedażowego.</li>
+          <li>Utrzymywanie porządku i higieny stanowiska pracy.</li>
+          <li>Współpraca z zespołem dla efektywnej obsługi klientów.</li>
+          <li>Praca w dynamicznym środowisku oraz w godzinach zwiększonego ruchu.</li>
+          <li>Przestrzeganie zasad bezpieczeństwa i standardów jakości.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="experience-row experience-detail-row">
+      <div class="experience-mark">↯</div>
+      <div class="experience-info">
+        <h3>Praktykant, <span>Starcom Dawid Jurek &amp; Janusz Korczak</span></h3>
+        <p>09.2023 - 10.2023</p>
+      </div>
+      <div class="experience-detail">
+        <span class="detail-title">ZAKRES OBOWIĄZKÓW</span>
+        <ul>
+          <li>Diagnostyka i naprawa sprzętu komputerowego oraz urządzeń peryferyjnych.</li>
+          <li>Serwis i konserwacja laptopów, komputerów oraz drukarek.</li>
+          <li>Diagnozowanie usterek sprzętu IT i ich usuwanie.</li>
+          <li>Naprawa oraz konfiguracja komputerów, laptopów i drukarek.</li>
+          <li>Wsparcie techniczne w zakresie sprzętu komputerowego i urządzeń peryferyjnych.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="experience-row experience-detail-row">
+      <div class="experience-mark">↯</div>
+      <div class="experience-info">
+        <h3>Pracownik produkcji taśmowej, <span>J.Muller — Niderlandy</span></h3>
+        <p>06.2023 - 08.2023</p>
+      </div>
+      <div class="experience-detail">
+        <span class="detail-title">ZAKRES OBOWIĄZKÓW</span>
+        <ul>
+          <li>Kontrolowanie jakości wyprodukowanych elementów na taśmie produkcyjnej.</li>
+          <li>Utrzymywanie tempa produkcji zgodnego z planem ustalonym przez dział produkcji.</li>
+          <li>Obsługiwanie maszyn produkcyjnych zgodnie z zasadami BHP.</li>
+          <li>Zgłaszanie usterek i nieprawidłowości w procesie produkcyjnym.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="experience-row experience-detail-row">
+      <div class="experience-mark">↯</div>
+      <div class="experience-info">
+        <h3>Praktyka zawodowa Erasmus+, <span>EU Mobility Sverige – Internships-Training</span></h3>
+        <p>02.2022 - 03.2022</p>
+      </div>
+      <div class="experience-detail">
+        <span class="detail-title">PROJEKT</span>
+        <strong>Projekt Erasmus+ : „Professions of modern Europe”</strong>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+
+
+
+<section class="about-section education-section">
+  <div class="section-heading">
+    <span class="section-kicker">02 / EDUKACJA</span>
+    <h2>Edukacja</h2>
+  </div>
+
+  <div class="experience-list uniform-list">
+    <article class="experience-row uniform-row">
+      <div class="experience-mark">↯</div>
+      <div class="experience-info">
+        <h3>Technikum nr 1 w Głogowie, <span>Średnie</span></h3>
+        <p>09.2019 - 06.2024</p>
+      </div>
+    </article>
+
+    <article class="experience-row uniform-row">
+      <div class="experience-mark">↯</div>
+      <div class="experience-info">
+        <h3>Dolnośląska Szkoła Wyższa z siedzibą we Wrocławiu</h3>
+        <p>10.2024 - 05.2026</p>
+      </div>
+    </article>
+
+    <article class="experience-row uniform-row">
+      <div class="experience-mark">↯</div>
+      <div class="experience-info">
+        <h3>Wyższa Szkoła Kształcenia Zawodowego</h3>
+        <p>09.2026 - Obecnie</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="about-section directions-section">
+  <div class="section-heading">
+    <span class="section-kicker">03 / KIERUNEK</span>
+    <h2>Kierunek rozwoju</h2>
+  </div>
+
+  <div class="experience-list uniform-list">
+    <article class="experience-row uniform-row">
+      <div class="experience-mark">↯</div>
+      <div class="experience-info">
+        <h3>Cybersecurity</h3>
+        <p>Rozwój kompetencji w obszarze bezpieczeństwa systemów i sieci</p>
+      </div>
+    </article>
+
+    <article class="experience-row uniform-row">
+      <div class="experience-mark">↯</div>
+      <div class="experience-info">
+        <h3>SOC</h3>
+        <p>Monitoring, analiza zdarzeń i reagowanie na incydenty bezpieczeństwa</p>
+      </div>
+    </article>
+
+    <article class="experience-row uniform-row">
+      <div class="experience-mark">↯</div>
+      <div class="experience-info">
+        <h3>IT Security</h3>
+        <p>Bezpieczeństwo infrastruktury, systemów i aplikacji</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+</main>
+
+<footer id="contact">© 2026 Sebastian Musiał. All rights reserved.</footer>
+<button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</body>
+</html>
